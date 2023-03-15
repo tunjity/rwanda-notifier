@@ -1,0 +1,48 @@
+-----------Exception Details on  02/02/2023 09:04:38-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/02/2023 09:04:38
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : After parsing a value an unexpected character was encountered: t. Path '[0].Body', line 1, position 167.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/02/2023 10:36:34-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/02/2023 10:36:34
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : Invalid property identifier character: \. Path '[0]', line 1, position 2.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

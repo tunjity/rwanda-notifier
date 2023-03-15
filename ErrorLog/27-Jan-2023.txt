@@ -1,0 +1,48 @@
+-----------Exception Details on  01/27/2023 09:45:46-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 01/27/2023 09:45:46
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  01/27/2023 10:59:49-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 01/27/2023 10:59:49
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : Unexpected character encountered while parsing value: <. Path '', line 0, position 0.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+

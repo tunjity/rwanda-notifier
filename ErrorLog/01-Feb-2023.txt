@@ -1,0 +1,216 @@
+-----------Exception Details on  02/01/2023 08:23:17-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 08:23:17
+
+Error Line No : 
+
+Error Message: HttpRequestException
+
+Exception Type: System.Net.Http.HttpRequestException
+
+Error Location : An error occurred while sending the request.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 10:18:14-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 10:18:14
+
+Error Line No : 
+
+Error Message: HttpRequestException
+
+Exception Type: System.Net.Http.HttpRequestException
+
+Error Location : An error occurred while sending the request.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 10:54:19-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 10:54:19
+
+Error Line No : 
+
+Error Message: TaskCanceledException
+
+Exception Type: System.Threading.Tasks.TaskCanceledException
+
+Error Location : The request was canceled due to the configured HttpClient.Timeout of 100 seconds elapsing.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 16:13:13-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 16:13:13
+
+Error Line No : 
+
+Error Message: HttpRequestException
+
+Exception Type: System.Net.Http.HttpRequestException
+
+Error Location : An error occurred while sending the request.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 16:18:55-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 16:18:55
+
+Error Line No : 
+
+Error Message: TaskCanceledException
+
+Exception Type: System.Threading.Tasks.TaskCanceledException
+
+Error Location : The request was canceled due to the configured HttpClient.Timeout of 100 seconds elapsing.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 16:23:31-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 16:23:31
+
+Error Line No : 
+
+Error Message: HttpRequestException
+
+Exception Type: System.Net.Http.HttpRequestException
+
+Error Location : An error occurred while sending the request.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 16:39:23-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 16:39:23
+
+Error Line No : 
+
+Error Message: HttpRequestException
+
+Exception Type: System.Net.Http.HttpRequestException
+
+Error Location : An error occurred while sending the request.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 18:34:03-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 18:34:03
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : After parsing a value an unexpected character was encountered: t. Path '[0].Body', line 1, position 167.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  02/01/2023 18:43:30-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 02/01/2023 18:43:30
+
+Error Line No : 
+
+Error Message: JsonReaderException
+
+Exception Type: Newtonsoft.Json.JsonReaderException
+
+Error Location : After parsing a value an unexpected character was encountered: t. Path '[0].Body', line 1, position 167.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
