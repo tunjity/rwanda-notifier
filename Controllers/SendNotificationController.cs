@@ -38,16 +38,6 @@ namespace notifier.Controllers
             var resp = await _notiService.SendReminder(due_date);
             return Ok(resp);
         }
-        [HttpGet("fetch-records-from-file")]
-        [ProducesResponseType(typeof(string), 200)]
-        [ProducesResponseType(typeof(ApiResponse), 200)]
-        [ProducesResponseType(typeof(IDictionary<string, string>), 400)]
-        public async Task<ActionResult> FetchRecordsFromFile([FromQuery] DateTime? due_date, string notificationType)
-        {
-            var resp = await _notiService.FetchRecordsFromFile(due_date,notificationType);
-            return Ok(resp);
-        }
-
 
         [HttpGet("extend-customers-device")]
         [ProducesResponseType(typeof(string), 200)]

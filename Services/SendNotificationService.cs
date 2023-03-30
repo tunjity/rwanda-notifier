@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic;
+using MySqlConnector;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using notifier.Interface;
@@ -6,6 +7,7 @@ using notifier.Model;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -106,14 +108,14 @@ namespace notifier.Services
             try
             {
                 var queryDate = dob == default ? DateTime.Now : dob.GetValueOrDefault();
-                string dobStr = queryDate.ToString();
+                string dobStr = queryDate.ToString("mm-dd");
                 bool isSet = Convert.ToBoolean(_config["mode:birthday"]);
                 string sample_notifications = _config["mode:sample_birthday_notifications"];
                 string sample_notifications_log = _config["mode:sample_birthday_notifications_log"];
 
                 if (isSet)
                 {
-                    var listCus = await GetCustomerForNotifications(dobStr, "dob");
+                    var listCus = await GetCustomerForNotifications(dob.GetValueOrDefault().ToString("dd-MM"), "dob");
                     if (listCus.Count != 0)
                     {
                         string smsTemplate = _config["smsurl:smsBirthdayTemplate"];
@@ -204,20 +206,20 @@ namespace notifier.Services
             }
         }
 
-        public async Task<MessageOut> FetchRecordsFromFile(DateTime? due_date,string notificationType)
+        public async Task<MessageOut> FetchRecordsFromFile(DateTime? due_date, string notificationType)
         {
             IDictionary<string, string> response = new Dictionary<string, string>();
             var endDate = DateTime.Now;
-            var listOfDays= GetDatesBetween(due_date.GetValueOrDefault(),endDate);
-            
-            foreach(var day in listOfDays)
+            var listOfDays = GetDatesBetween(due_date.GetValueOrDefault(), endDate);
+
+            foreach (var day in listOfDays)
             {
                 IDictionary<string, string> ret = null;
                 string logPath = $"{Path.Combine(_serverPath, _notificationLogPath)}{day}/{notificationType}";
                 ret = Logger.ReadFromFile(logPath);
-                foreach(var item in ret)
+                foreach (var item in ret)
                 {
-                    if(item.Value != "Error: This Path Is Invalid")
+                    if (item.Value != "Error: This Path Is Invalid")
                         response.Add(item);
                 }
             }
@@ -327,10 +329,10 @@ namespace notifier.Services
         public List<string> GetDatesBetween(DateTime startDate, DateTime endDate)
         {
             List<string> allDates = new List<string>();
-            startDate = startDate.Date; endDate= endDate.Date;
+            startDate = startDate.Date; endDate = endDate.Date;
             for (var dt = startDate; dt <= endDate; dt = dt.AddDays(1))
             {
-                allDates.Add(dt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture).Replace("-",""));
+                allDates.Add(dt.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture).Replace("-", ""));
             }
             return allDates;
         }
@@ -439,44 +441,30 @@ namespace notifier.Services
 
         private async Task<List<GetCustomerForNotification>> GetCustomerForNotifications(string ddate, string source)
         {
-            var headers = new Dictionary<string, string>();
-            string apiUrl = "";
-            string responseString = "";
             var lstCus = new List<GetCustomerForNotification>();
             try
             {
-                var header = ConfigHelpers.AppSetting("smsurl", "sms_headers");
-                switch (source)
-                {
-                    case "due_date":
-                        apiUrl = ConfigHelpers.AppSetting("smsurl", "getcustomerurl");
-                        apiUrl = apiUrl.Replace("[[due_date]]", ddate);
-                        break;
-                    case "dob":
-                        apiUrl = ConfigHelpers.AppSetting("smsurl", "getcustomerbydoburl");
-                        apiUrl = apiUrl.Replace("[[dob]]", ddate);
-                        break;
-                    case "new":
-                        apiUrl = _config["smsurl:getnewcustomerurl"];
-                        apiUrl = apiUrl.Replace("[[onboard_date]]", ddate);
-                        break;
-                }
+                string mnth="", day="";
+                day = ddate.Split("-").First();
+                mnth = ddate.Split("-").Last();
+                string MyConnection2 = ConfigHelpers.AppSetting("ConnectionStrings", "DefaultConnection");
+                //Display query
+                string Query = $"SELECT * FROM finance_one.customers WHERE MONTH(dob) = {mnth} AND DAY(dob) = {day}";
+          //      string Query = $"select c.customer_id CustomerId,c.msisdn Msisdn,concat(c.name,\" \",c.surname) as CustomerName,c.gender Gender,c.dob DOB from customers c inner join customerloan cl on c.customer_id = cl.customer_id where c.customer_type = 'CUSTOMER' and TRIM(cl.bank_application_status) = 'APPROVED' and nullif(c.dob,'') is not null and DATE_FORMAT(c.dob,\"%m-%d\") = DATE_FORMAT({ddate},\"%m-%d\")";
+                MySqlConnection MyConn2 = new MySqlConnection(MyConnection2);
+                MySqlCommand MyCommand2 = new MySqlCommand(Query, MyConn2);
+                //  MyConn2.Open();
+                //For offline connection we weill use  MySqlDataAdapter class.
+                MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
+                MyAdapter.SelectCommand = MyCommand2;
+                DataTable dTable = new DataTable();
+                MyAdapter.Fill(dTable);
+                var headers = new Dictionary<string, string>();
+                string apiUrl = "";
+                string responseString = "";
+                var json = JsonConvert.SerializeObject(dTable);
+                lstCus = JsonConvert.DeserializeObject<List<GetCustomerForNotification>>(json);
 
-                if (!string.IsNullOrWhiteSpace(header))
-                {
-                    headers = header.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
-                        .Select(part => part.Split(':'))
-                        .ToDictionary(split => split[0], split => split[1]);
-                }
-
-                responseString = await ApiHelper.MakeRequest(new ApiLinkDTO
-                {
-                    final_url = apiUrl,
-                    headers = JsonConvert.SerializeObject(headers),
-                    method = "GET",
-                    body = ""
-                });
-                lstCus = JsonConvert.DeserializeObject<ListGetCustomerForNotification>(responseString)?.data;
                 return lstCus;
 
             }

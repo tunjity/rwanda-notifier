@@ -1,0 +1,72 @@
+-----------Exception Details on  03/19/2023 20:02:50-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 03/19/2023 20:02:50
+
+Error Line No : 
+
+Error Message: MySqlException
+
+Exception Type: MySqlConnector.MySqlException
+
+Error Location : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '00:00:00,"%m-%d")' at line 1
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  03/19/2023 20:02:51-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 03/19/2023 20:02:51
+
+Error Line No : 
+
+Error Message: NullReferenceException
+
+Exception Type: System.NullReferenceException
+
+Error Location : Object reference not set to an instance of an object.
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
+-----------Exception Details on  03/19/2023 20:25:50-----------------
+-------------------------------------------------------------------------------------
+
+
+
+Log Written Date: 03/19/2023 20:25:50
+
+Error Line No : 
+
+Error Message: MySqlException
+
+Exception Type: MySqlConnector.MySqlException
+
+Error Location : No database selected
+
+ Error Page Url: 
+
+User Host IP: 
+
+
+--------------------------------*End*------------------------------------------
+
+
+
